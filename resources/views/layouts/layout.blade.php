@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/toastr/toastr.min.css')}}">
   @yield('style')
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css')}}">
@@ -32,6 +36,13 @@
 <script src="{{ asset('adminLTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{ asset('adminLTE/plugins/toastr/toastr.min.js')}}"></script>
+<script>
+  jQuery(document).ready(function($){
+    toastr.info('Are you the 6 fingered man?');
+  });
+</script>
 @yield('script')
 <!-- AdminLTE App -->
 <script src="{{ asset('adminLTE/dist/js/adminlte.min.js')}}"></script>
