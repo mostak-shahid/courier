@@ -31,6 +31,14 @@ class UsersTableSeeder extends Seeder
             'active' => 1,
         ]);
         User::create([
+            'name' => 'Dummy Merchant 2',
+            'email' => 'dummy.merchant2@email.com',
+            'username' => '987654321',
+            'password' => bcrypt('123456789'),
+            'role' => 'merchant',
+            'active' => 0,
+        ]);
+        User::create([
             'name' => 'Dummy Driver',
             'email' => 'dummy.driver@email.com',
             'username' => '0123456789',

@@ -19,6 +19,8 @@
   @yield('style')
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css')}}">
+  <!-- Custom style -->
+  <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/custom.css')}}">
 </head>
 <body class="hold-transition {{$body_class}}">
 <div class="{{$wrapper_class}}">
@@ -40,7 +42,11 @@
 <script src="{{ asset('adminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <script>
   jQuery(document).ready(function($){
-    toastr.info('Are you the 6 fingered man?');
+    @if(Session::has('success'))
+        toastr.success('{{Session::get('success')}}', 'Success!');
+    @elseif(Session::has('error'))
+        toastr.error('{{Session::get('error')}}', 'Error!');
+    @endif
   });
 </script>
 @yield('script')

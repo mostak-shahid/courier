@@ -10,56 +10,66 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form id="quickForm" action="{{ route('register') }}" method="post">
+                <form id="registerForm" action="{{ route('register') }}" method="post">
                     @csrf
-                    <div class="input-group mb-3">
-                        <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full name">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full name">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
                             </div>
                         </div>
+                        @if ($errors->has('name'))
+                            <div class="text-danger mb-3"><strong>{{ $errors->first('name') }}</strong></div>
+                        @endif
                     </div>
-                    @if ($errors->has('name'))
-                        <div class="text-danger mb-3"><strong>{{ $errors->first('name') }}</strong></div>
-                    @endif
-                    <div class="input-group mb-3">
-                        <input id="username" name="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Phone" value="{{ old('username') }}" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-phone-square"></span>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input id="username" name="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Phone" value="{{ old('username') }}" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-phone-square"></span>
+                                </div>
                             </div>
                         </div>
+                        @if ($errors->has('username'))
+                            <div class="text-danger mb-3"><strong>{{ $errors->first('username') }}</strong></div>
+                        @endif
                     </div>
-                    @if ($errors->has('username'))
-                        <div class="text-danger mb-3"><strong>{{ $errors->first('username') }}</strong></div>
-                    @endif
-                    <div class="input-group mb-3">
-                        <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="new-password" placeholder="Password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
                             </div>
                         </div>
+                        @if ($errors->has('password'))
+                            <div class="text-danger mb-3"><strong>{{ $errors->first('password') }}</strong></div>
+                        @endif
                     </div>
-                    @if ($errors->has('password'))
-                        <div class="text-danger mb-3"><strong>{{ $errors->first('password') }}</strong></div>
-                    @endif
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Retype password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Retype password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="terms" name="terms" value="agree" required>
-                                <label for="terms">
-                                    I agree to the <a href="#">terms</a>
-                                </label>
+                            <div class="form-group mb-3">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="terms" name="terms" value="agree" required>
+                                    <label for="terms">
+                                        I agree to the <a href="#">terms</a>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -104,7 +114,7 @@
                     alert( "Form successful submitted!" );
                 }
             });*/
-            $('#quickForm').validate({
+            $('#registerForm').validate({
                 rules: {
                     name: {
                         required: true,
@@ -125,7 +135,7 @@
                         required: "Please enter name",
                     },
                     username: {
-                        required: "Please enter phone or email",
+                        required: "Please enter Phone",
                     },
                     password: {
                         required: "Please provide a password",
