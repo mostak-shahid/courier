@@ -242,6 +242,30 @@
                                             <div class="text-danger mb-3"><strong>{{ $errors->first('mobile') }}</strong></div>
                                         @endif
                                     </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="address_line_1">Current address <span class="text-danger">*</span></label>
+                                        <div class="input-group mb-1">
+                                            <input id="address_line_1" name="address_line_1" type="text" class="form-control @error('address_line_1') is-invalid @enderror" placeholder="Address Line 1" value="{{ old('address_line_1') }}" required>
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-map-marker-alt"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input id="address_line_2" name="address_line_2" type="text" class="form-control @error('address_line_2') is-invalid @enderror" placeholder="Address Line 2" value="{{ old('address_line_2') }}">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas fa-map-marker-alt"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('address_line_1'))
+                                            <div class="text-danger mb-3"><strong>{{ $errors->first('address_line_1') }}</strong></div>
+                                        @endif
+                                    </div>
+
                                     <div class="form-group mb-3">
                                         <label for="password">Password</label>
                                         <div class="input-group">
@@ -301,28 +325,6 @@
                                         </div>
                                         @if ($errors->has('business_name'))
                                             <div class="text-danger mb-3"><strong>{{ $errors->first('business_name') }}</strong></div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="address_line_1">Business address <span class="text-danger">*</span></label>
-                                        <div class="input-group mb-1">
-                                            <input id="address_line_1" name="address_line_1" type="text" class="form-control @error('address_line_1') is-invalid @enderror" placeholder="Address Line 1" value="{{ old('address_line_1') }}" required>
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <span class="fas fa-map-marker-alt"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <input id="address_line_2" name="address_line_2" type="text" class="form-control @error('address_line_2') is-invalid @enderror" placeholder="Address Line 2" value="{{ old('address_line_2') }}">
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">
-                                                    <span class="fas fa-map-marker-alt"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @if ($errors->has('address_line_1'))
-                                            <div class="text-danger mb-3"><strong>{{ $errors->first('address_line_1') }}</strong></div>
                                         @endif
                                     </div>
                                 </div>

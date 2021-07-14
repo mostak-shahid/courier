@@ -38,7 +38,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/merchants/{id}/deactive', [App\Http\Controllers\userController::class, 'merchantsDeactive'])->name('admin.merchants.deactive');
 
         Route::get('/drivers', [App\Http\Controllers\userController::class, 'drivers'])->name('admin.drivers');
-//        Route::get('/drivers/register', [App\Http\Controllers\userController::class, 'driversRegister'])->name('admin.drivers.register');
+        Route::get('/drivers/register', [App\Http\Controllers\userController::class, 'driversRegister'])->name('admin.drivers.register');
 //        Route::post('/drivers/store', [App\Http\Controllers\userController::class, 'driversStore'])->name('admin.drivers.store');
 //        Route::get('/drivers/{id}/edit', [App\Http\Controllers\userController::class, 'driversEdit'])->name('admin.drivers.edit');
 //        Route::put('/drivers/{id}', [App\Http\Controllers\userController::class, 'driversUpdate'])->name('admin.drivers.update');

@@ -322,5 +322,10 @@ class UserController extends Controller
         }
         return view('admin.driver.index', compact('body_class', 'wrapper_class', 'drivers'));
     }
+    public function driversRegister(){
+        $body_class = $this->body_class;
+        $wrapper_class = $this->wrapper_class;
+        return view('admin.driver.register', compact('body_class', 'wrapper_class'));
+    }
 
 }
