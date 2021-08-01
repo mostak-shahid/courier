@@ -3,14 +3,14 @@
 @section('content')
 
         <div class="register-logo">
-            <a href="#"><b>Admin</b>LTE</a>
+            <a href="{{route('home')}}">{{$company_name}}</a>
         </div>
 
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form id="registerForm" action="{{ route('register') }}" method="post">
+                <form id="validteForm" action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="form-group mb-3">
                         <div class="input-group">
@@ -114,7 +114,7 @@
                     alert( "Form successful submitted!" );
                 }
             });*/
-            $('#registerForm').validate({
+            $('#validteForm').validate({
                 rules: {
                     name: {
                         required: true,

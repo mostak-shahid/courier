@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     $wrapper_class = 'wrapper';
     return view('welcome', compact('body_class', 'wrapper_class'));
 });*/
-Route::get('/',[App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+Route::get('/',[App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('home');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -26,33 +26,51 @@ Route::group(['middleware'=>'auth'], function(){
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
         Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 
+        Route::get('/notices/', [App\Http\Controllers\NoteController::class, 'adminNoteIndex'])->name('admin.note.index');
+        Route::get('/notices/create', [App\Http\Controllers\NoteController::class, 'adminNoteCreate'])->name('admin.note.create');
+        Route::post('/notices/store', [App\Http\Controllers\NoteController::class, 'adminNoteStore'])->name('admin.note.store');
+
+        Route::get('/settings/general/', [App\Http\Controllers\SettingController::class, 'adminSettingsGeneral'])->name('admin.settings.general');
+        Route::put('/settings/general/', [App\Http\Controllers\SettingController::class, 'adminSettingsGeneralUpdate'])->name('admin.settings.general.update');
+
+        Route::get('/profile/general/', [App\Http\Controllers\userController::class, 'usersProfileGeneral'])->name('admin.profile.general');
+        Route::get('/profile/changePassword/', [App\Http\Controllers\userController::class, 'usersChangePassword'])->name('admin.profile.changepassword');
+
         Route::get('/merchants', [App\Http\Controllers\userController::class, 'merchants'])->name('admin.merchants');
         Route::get('/merchants/register', [App\Http\Controllers\userController::class, 'merchantsRegister'])->name('admin.merchants.register');
-        Route::post('/merchants/store', [App\Http\Controllers\userController::class, 'merchantsStore'])->name('admin.merchants.store');
+        Route::post('/merchants/store', [App\Http\Controllers\userController::class, 'usersStore'])->name('admin.merchants.store');
         Route::get('/merchants/{id}/edit', [App\Http\Controllers\userController::class, 'merchantsEdit'])->name('admin.merchants.edit');
-        Route::put('/merchants/{id}', [App\Http\Controllers\userController::class, 'merchantsUpdate'])->name('admin.merchants.update');
-        Route::delete('/merchants/{id}', [App\Http\Controllers\userController::class, 'merchantsDestroy'])->name('admin.merchants.destroy');
-        Route::get('/merchants/changePassword/{id}', [App\Http\Controllers\userController::class, 'merchantsChangePassword'])->name('admin.merchants.changepassword');
-        Route::post('/merchants/updatePassword/{id}', [App\Http\Controllers\userController::class, 'merchantsUpdatePassword'])->name('admin.merchants.updatepassword');
-        Route::get('/merchants/{id}/active', [App\Http\Controllers\userController::class, 'merchantsActive'])->name('admin.merchants.active');
-        Route::get('/merchants/{id}/deactive', [App\Http\Controllers\userController::class, 'merchantsDeactive'])->name('admin.merchants.deactive');
+        Route::put('/merchants/{id}', [App\Http\Controllers\userController::class, 'usersUpdate'])->name('admin.merchants.update');
+        Route::delete('/merchants/{id}', [App\Http\Controllers\userController::class, 'usersDestroy'])->name('admin.merchants.destroy');
+        Route::get('/merchants/changePassword/{id}', [App\Http\Controllers\userController::class, 'usersChangePassword'])->name('admin.merchants.changepassword');
+        Route::post('/merchants/updatePassword/{id}', [App\Http\Controllers\userController::class, 'usersUpdatePassword'])->name('admin.merchants.updatepassword');
+        Route::get('/merchants/{id}/active', [App\Http\Controllers\userController::class, 'usersActive'])->name('admin.merchants.active');
+        Route::get('/merchants/{id}/deactive', [App\Http\Controllers\userController::class, 'usersDeactive'])->name('admin.merchants.deactive');
 
         Route::get('/drivers', [App\Http\Controllers\userController::class, 'drivers'])->name('admin.drivers');
         Route::get('/drivers/register', [App\Http\Controllers\userController::class, 'driversRegister'])->name('admin.drivers.register');
-//        Route::post('/drivers/store', [App\Http\Controllers\userController::class, 'driversStore'])->name('admin.drivers.store');
-//        Route::get('/drivers/{id}/edit', [App\Http\Controllers\userController::class, 'driversEdit'])->name('admin.drivers.edit');
-//        Route::put('/drivers/{id}', [App\Http\Controllers\userController::class, 'driversUpdate'])->name('admin.drivers.update');
-//        Route::delete('/drivers/{id}', [App\Http\Controllers\userController::class, 'driversDestroy'])->name('admin.drivers.destroy');
-//        Route::get('/drivers/changePassword/{id}', [App\Http\Controllers\userController::class, 'driversChangePassword'])->name('admin.drivers.changepassword');
-//        Route::post('/drivers/updatePassword/{id}', [App\Http\Controllers\userController::class, 'driversUpdatePassword'])->name('admin.drivers.updatepassword');
-//        Route::get('/drivers/{id}/active', [App\Http\Controllers\userController::class, 'driversActive'])->name('admin.drivers.active');
-//        Route::get('/drivers/{id}/deactive', [App\Http\Controllers\userController::class, 'driversDeactive'])->name('admin.drivers.deactive');
+        Route::post('/drivers/store', [App\Http\Controllers\userController::class, 'usersStore'])->name('admin.drivers.store');
+        Route::get('/drivers/{id}/edit', [App\Http\Controllers\userController::class, 'driversEdit'])->name('admin.drivers.edit');
+        Route::put('/drivers/{id}', [App\Http\Controllers\userController::class, 'usersUpdate'])->name('admin.drivers.update');
+        Route::delete('/drivers/{id}', [App\Http\Controllers\userController::class, 'usersDestroy'])->name('admin.drivers.destroy');
+        Route::get('/drivers/changePassword/{id}', [App\Http\Controllers\userController::class, 'usersChangePassword'])->name('admin.drivers.changepassword');
+        Route::post('/drivers/updatePassword/{id}', [App\Http\Controllers\userController::class, 'usersUpdatePassword'])->name('admin.drivers.updatepassword');
+        Route::get('/drivers/{id}/active', [App\Http\Controllers\userController::class, 'usersActive'])->name('admin.drivers.active');
+        Route::get('/drivers/{id}/deactive', [App\Http\Controllers\userController::class, 'usersDeactive'])->name('admin.drivers.deactive');
     });
     Route::group(['prefix'=>'merchant','middleware'=>'merchant'],function(){
         Route::get('/', [App\Http\Controllers\HomeController::class, 'merchant'])->name('merchant');
+        Route::get('/profile/general/', [App\Http\Controllers\userController::class, 'merchantsProfileGeneral'])->name('merchant.profile.general');
+        Route::put('/profile/general/update/{id}', [App\Http\Controllers\userController::class, 'usersUpdate'])->name('merchant.profile.general.update');
+        Route::get('/profile/changePassword/', [App\Http\Controllers\userController::class, 'usersChangePassword'])->name('merchant.profile.changepassword');
+        Route::post('/profile/updatePassword/{id}', [App\Http\Controllers\userController::class, 'usersUpdatePassword'])->name('merchants.updatepassword');
     });
     Route::group(['prefix'=>'driver','middleware'=>'driver'],function(){
         Route::get('/', [App\Http\Controllers\HomeController::class, 'driver'])->name('driver');
+        Route::get('/profile/general/', [App\Http\Controllers\userController::class, 'merchantsProfileGeneral'])->name('driver.profile.general');
+        Route::put('/profile/general/update/{id}', [App\Http\Controllers\userController::class, 'usersUpdate'])->name('driver.profile.general.update');
+        Route::get('/profile/changePassword/', [App\Http\Controllers\userController::class, 'usersChangePassword'])->name('driver.profile.changepassword');
+        Route::post('/profile/updatePassword/{id}', [App\Http\Controllers\userController::class, 'usersUpdatePassword'])->name('driver.updatepassword');
     });
 });
 
@@ -60,7 +78,7 @@ Route::get('/image/{url}/{width}/{height?}', function($url,$width,$height=null){
     if (is_numeric($url)) {
         if (preg_match('/image/i', App\Models\Media::find($url)->type)) {
             $url = App\Models\Media::find($url)->url;
-        }else {
+        } else {
             $url = 'placeholder.png';
         }
     }

@@ -18,5 +18,25 @@ class ProfilesTableSeeder extends Seeder
             'key' => 'mobile',
             'value' => '01710702212'
         ]);
+        Profile::create([
+            'user_id' => 1,
+            'key' => 'avatar',
+            'value' => '1'
+        ]);
+        Profile::create([
+            'user_id' => 2,
+            'key' => 'avatar',
+            'value' => '1'
+        ]);
+        Profile::create([
+            'user_id' => 3,
+            'key' => 'avatar',
+            'value' => '1'
+        ]);
+        Profile::create([
+            'user_id' => 4,
+            'key' => 'avatar',
+            'value' => '1'
+        ]);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'title', 'slug', 'url', 'type'];
+    protected $guarded = [];
     public function user(){
         return $this->belongsTo('App\User');
     }

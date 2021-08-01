@@ -1,5 +1,5 @@
 <?php
-
+//$app_name = App\Models\Setting::where('key','company_name')->first()->value;
 return [
 
     /*

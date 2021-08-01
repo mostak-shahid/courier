@@ -6,7 +6,7 @@
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ $company_name }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,9 +21,12 @@
   <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css')}}">
   <!-- Custom style -->
   <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/custom.css')}}">
+  <link rel="icon" href="{{route('image', ['url'=>$company_favicon, 'width'=>32, 'height'=>32])}}" sizes="32x32" />
+  <link rel="apple-touch-icon" href="{{route('image', ['url'=>$company_favicon, 'width'=>180, 'height'=>180])}}" />
 </head>
 <body class="hold-transition {{$body_class}}">
 <div class="{{$wrapper_class}}">
+  @include('layouts.errors')
   @yield('topnav')
   @yield('sidebar_left')
   @yield('content')
@@ -31,7 +34,9 @@
   @yield('footer')
 </div>
 <!-- ./wrapper -->
-
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+@csrf
+</form>
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->

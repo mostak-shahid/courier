@@ -49,4 +49,10 @@ class User extends Authenticatable
     public function profiles(){
         return $this->hasMany('App\Models\Profile');
     }
+    public function notesCreated(){
+        return $this->hasMany('App\Models\Note');
+    }
+    public function notesReceived(){
+        return $this->belongsToMany('App\Models\Note');
+    }
 }

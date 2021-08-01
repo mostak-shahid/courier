@@ -62,3 +62,6 @@
 .btn-link:disabled, .btn-link.disabled {
     color: #6c757d;
 }
+.note-insert{
+    display: none;
+}
