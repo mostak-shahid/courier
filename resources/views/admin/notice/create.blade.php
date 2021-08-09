@@ -52,6 +52,7 @@
                                         <select name="to[]" class="form-control select2bs4" style="width: 100%;" multiple data-placeholder="To:">
                                             @if($merchants->count())
                                             <optgroup label="Merchants">
+                                                <option value="all-merchants">All Merchants</option>
                                                 @foreach($merchants as $merchant)
                                                 <option value="{{$merchant->id}}">{{$merchant->username}}</option>
                                                 @endforeach
@@ -59,6 +60,7 @@
                                             @endif
                                             @if($drivers->count())
                                             <optgroup label="Drivers">
+                                                <option value="all-drivers">All Drivers</option>
                                                 @foreach($drivers as $driver)
                                                 <option value="{{$driver->id}}">{{$driver->username}}</option>
                                                 @endforeach

@@ -59,6 +59,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/drivers/{id}/deactive', [App\Http\Controllers\userController::class, 'usersDeactive'])->name('admin.drivers.deactive');
     });
     Route::group(['prefix'=>'merchant','middleware'=>'merchant'],function(){
+        Route::get('/notices/', [App\Http\Controllers\NoteController::class, 'merchantNoteIndex'])->name('merchant.note.index');
+
         Route::get('/', [App\Http\Controllers\HomeController::class, 'merchant'])->name('merchant');
         Route::get('/profile/general/', [App\Http\Controllers\userController::class, 'merchantsProfileGeneral'])->name('merchant.profile.general');
         Route::put('/profile/general/update/{id}', [App\Http\Controllers\userController::class, 'usersUpdate'])->name('merchant.profile.general.update');
