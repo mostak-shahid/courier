@@ -20,10 +20,13 @@ class NoteController extends Controller
                 ->addColumn('user_id', function($data){
                     return $data->user->name;
                 })
-                ->addColumn('created_at', function($data){
-                    return '<div class="text-right">'.$data->created_at.'</div>';
+                ->addColumn('title', function($data){
+                    return '<strong>'.$data->title.'</strong><br/>'.strip_tags($data->content);
                 })
-                ->rawColumns(['created_at'])
+                ->addColumn('created_at', function($data){
+                    return '<div class="text-right">'.$data->created_at->diffForHumans().'</div>';
+                })
+                ->rawColumns(['title','created_at'])
 //                ->make(true);
                 ->toJson();
         }

@@ -42,16 +42,14 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Created By</th>
-                                    <th>Title</th>
+                                    <th>Notiece</th>
                                     <th class="text-right">Created</th>
                                 </tr>
                                 </thead>
 
                                 <tfoot>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Created By</th>
                                     <th>Title</th>
                                     <th class="text-right">Created</th>
@@ -116,10 +114,6 @@
 
             columns: [
                 {
-                    data: 'id',
-                    name: 'id'
-                },
-                {
                     data: 'user_id',
                     name: 'user_id'
                 },
@@ -135,7 +129,17 @@
             responsive: true,
             //"lengthChange": false,
             autoWidth: false,
-            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+            "columnDefs": [ 
+                {
+                "targets": 1,
+                "orderable": false
+                },
+                {
+                "targets": 2,
+                "orderable": false
+                }
+            ],                     
         })//.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('body').on('click', '.delete-user', function (e){
         //$('.delete-user').click(function(e){
