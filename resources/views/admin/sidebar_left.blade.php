@@ -122,8 +122,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ (request()->is('admin/branches*')) ? 'menu-open' : '' }}">
+                    <a href="{{route('admin.branches')}}" class="nav-link {{ (request()->is('admin/branches*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-sitemap"></i>
                         <p>
                             Branches
@@ -132,13 +132,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin.branches')}}" class="nav-link {{ (request()->is('admin/branches')) ? 'active' : '' }}">
                                 <i class="far fas fa-sitemap nav-icon"></i>
                                 <p>All Branches</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin.branch.create')}}" class="nav-link {{ (request()->is('admin/branch/create')) ? 'active' : '' }}">
                                 <i class="far fa-plus-square nav-icon"></i>
                                 <p>Add New</p>
                             </a>

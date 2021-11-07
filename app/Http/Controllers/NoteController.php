@@ -21,10 +21,18 @@ class NoteController extends Controller
                     return $data->user->name;
                 })
                 ->addColumn('title', function($data){
-                    return '<strong>'.$data->title.'</strong><br/>'.strip_tags($data->content);
+                    return '<strong>'.$data->title.'</strong> - ' . mos_trim_words($data->content, 10, '......' );
                 })
                 ->addColumn('created_at', function($data){
-                    return '<div class="text-right">'.$data->created_at->diffForHumans().'</div>';
+                    $time_to_show = $data->created_at->diffForHumans();
+                    $date=date_create($data->created_at);
+                    $unit_diff = mos_date_difference(date("Y-m-d H:i:s"), $data->created_at, 'unit');
+                    if ($unit_diff == 'Years') {
+                        $time_to_show = date_format($date,"m/d/y");
+                    } elseif ($unit_diff == 'Months') {
+                        $time_to_show = date_format($date,"M j");
+                    }
+                    return '<div class="text-right">'.$time_to_show.'</div>';
                 })
                 ->rawColumns(['title','created_at'])
 //                ->make(true);

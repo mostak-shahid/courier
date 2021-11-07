@@ -30,6 +30,13 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/notices/create', [App\Http\Controllers\NoteController::class, 'adminNoteCreate'])->name('admin.note.create');
         Route::post('/notices/store', [App\Http\Controllers\NoteController::class, 'adminNoteStore'])->name('admin.note.store');
 
+        Route::get('/branches/', [App\Http\Controllers\SettingController::class, 'adminBranches'])->name('admin.branches');
+        Route::get('/branch/create', [App\Http\Controllers\SettingController::class, 'adminBranchesCreate'])->name('admin.branch.create');
+//        Route::post('/branch/store', [App\Http\Controllers\SettingController::class, 'adminBranches'])->name('admin.branches');
+//        Route::get('/branch/edit', [App\Http\Controllers\SettingController::class, 'adminBranches'])->name('admin.branches');
+//        Route::put('/branch/{id}', [App\Http\Controllers\SettingController::class, 'adminBranches'])->name('admin.branches');
+//        Route::delete('/branch/{id}', [App\Http\Controllers\SettingController::class, 'adminBranches'])->name('admin.branches');
+
         Route::get('/settings/general/', [App\Http\Controllers\SettingController::class, 'adminSettingsGeneral'])->name('admin.settings.general');
         Route::put('/settings/general/', [App\Http\Controllers\SettingController::class, 'adminSettingsGeneralUpdate'])->name('admin.settings.general.update');
 

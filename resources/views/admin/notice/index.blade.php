@@ -42,6 +42,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Created By</th>
                                     <th>Notiece</th>
                                     <th class="text-right">Created</th>
@@ -50,6 +51,7 @@
 
                                 <tfoot>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Created By</th>
                                     <th>Title</th>
                                     <th class="text-right">Created</th>
@@ -114,6 +116,10 @@
 
             columns: [
                 {
+                    data: 'id',
+                    name: 'id'
+                },
+                {
                     data: 'user_id',
                     name: 'user_id'
                 },
@@ -132,12 +138,22 @@
             buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
             "columnDefs": [ 
                 {
-                "targets": 1,
-                "orderable": false
+                    "targets": 0,
+                    "visible": false,
+                    "searchable": false,
                 },
                 {
-                "targets": 2,
-                "orderable": false
+                    "targets": 1,
+                    "width": 150
+                },
+                {
+                    "targets": 2,
+                    "orderable": false
+                },
+                {
+                    "targets": 3,
+                    "orderable": false,
+                    "width": 120
                 }
             ],                     
         })//.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');

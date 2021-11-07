@@ -63,4 +63,12 @@ class SettingController extends Controller
         Session::flash('success', 'Settings has been updated.');
         return redirect()->back();
     }
+    public function adminBranches(){
+        $branches = Setting::where('key', 'branches')->get();
+        return view('admin.branch.index', compact('branches'));
+
+    }
+    public function adminBranchesCreate(){
+        return view('admin.branch.create');
+    }
 }

@@ -234,7 +234,7 @@ class UserController extends Controller
             // $post->image =  'uploads/posts/'.$image_new_name;
             $avatar_media = Media::create([
                 'user_id' => Auth::id(),
-                'title' => Auth::user()->name . ' Profile Photo',
+                'title' => $request->name . ' Profile Photo',
                 'slug' => $name,
                 'url' =>'uploads/'.$image_new_name,
                 'type' => $type,
@@ -251,7 +251,7 @@ class UserController extends Controller
             // $post->image =  'uploads/posts/'.$image_new_name;
             $buseness_logo_media = Media::create([
                 'user_id' => Auth::id(),
-                'title' => Auth::user()->name . ' Profile Photo',
+                'title' => $request->name . ' Profile Photo',
                 'slug' => $name,
                 'url' =>'uploads/'.$image_new_name,
                 'type' => $type,
