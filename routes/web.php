@@ -26,6 +26,9 @@ Route::group(['middleware'=>'auth'], function(){
     Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
         Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 
+        Route::get('/orders/', [App\Http\Controllers\orderController::class, 'index'])->name('admin.order.index');
+        Route::get('/order/create', [App\Http\Controllers\orderController::class, 'create'])->name('admin.order.create');
+
         Route::get('/notices/', [App\Http\Controllers\NoteController::class, 'adminNoteIndex'])->name('admin.note.index');
         Route::get('/notices/create', [App\Http\Controllers\NoteController::class, 'adminNoteCreate'])->name('admin.note.create');
         Route::post('/notices/store', [App\Http\Controllers\NoteController::class, 'adminNoteStore'])->name('admin.note.store');
